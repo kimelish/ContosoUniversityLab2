@@ -31,13 +31,13 @@ namespace ContosoUniversity.Pages.Courses
             }
 
             Course = await _context.Courses
-                .Include(c => c.Department).FirstOrDefaultAsync(m => m.courseID == id);
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (Course == null)
             {
                 return NotFound();
             }
-           ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID");
+            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID");
             return Page();
         }
 
@@ -58,7 +58,7 @@ namespace ContosoUniversity.Pages.Courses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CourseExists(Course.courseID))
+                if (!CourseExists(Course.CourseID))
                 {
                     return NotFound();
                 }
@@ -73,7 +73,7 @@ namespace ContosoUniversity.Pages.Courses
 
         private bool CourseExists(int id)
         {
-            return _context.Courses.Any(e => e.courseID == id);
+            return _context.Courses.Any(e => e.CourseID == id);
         }
     }
 }

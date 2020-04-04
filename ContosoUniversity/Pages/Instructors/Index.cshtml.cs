@@ -54,7 +54,9 @@ namespace ContosoUniversity.Pages.Instructors
             {
                 CourseID = courseID.Value;
                 var selectedCourse = InstructorData.Courses
-                    .Where(c => c.courseID == CourseID).Single();
+                    .Single(c => c.CourseID == CourseID);
+                var temp = selectedCourse;
+
                 InstructorData.Enrollments = selectedCourse.Enrollments;
             }
         }

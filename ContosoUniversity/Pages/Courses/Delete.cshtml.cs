@@ -30,7 +30,7 @@ namespace ContosoUniversity.Pages.Courses
             }
 
             Course = await _context.Courses
-                .Include(c => c.Department).FirstOrDefaultAsync(m => m.courseID == id);
+                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (Course == null)
             {
